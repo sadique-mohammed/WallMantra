@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Search, Heart, ShoppingBag, User, Menu, X } from "lucide-react";
+import { Search, Heart, ShoppingBag, User, Menu, X, FlipVertical } from "lucide-react";
 
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -14,31 +14,33 @@ function Header() {
         </Link>
       </div>
       <div>
-        <nav className="flex gap-4 font-semibold">
+        <nav className="hidden md:flex space-x-8 font-semibold">
           <Link href="/">MEN</Link>
           <Link href="/">WOMEN</Link>
           <Link href="/">MOBILE COVERS</Link>
         </nav>
       </div>
-      {/* Search, Account, Wishlist, Cart */}
-      <div className="flex items-center space-x-4">
-        <div className="hidden md:flex relative">
-          <input
-            type="text"
-            placeholder="Search by products"
-            className="pl-10 pr-4 py-2 bg-gray-100 rounded-md text-sm"
-          />
-          <Search className="absolute top-2.5 left-3 h-4 w-4 text-gray-500" />
+      <div>
+        <div className="flex items-center space-x-4">
+          <div className="hidden md:flex relative">
+            <input
+              type="text"
+              placeholder="Search by products"
+              className="pl-10 pr-4 py-2 bg-gray-100 rounded-md text-sm w-72"
+            />
+            <Search className="absolute top-2.5 left-3 h-4 w-4 text-gray-500" />
+            <div className="mx-10 flex h-4 w-4 mt-1 text-gray-500">|</div>
+          </div>
+          <Link href="/login" className="text-xs font-medium hidden md:block">
+            LOGIN
+          </Link>
+          <Link href="/wishlist" className="relative inline-flex">
+            <Heart className="h-5 w-5 text-gray-700" />
+          </Link>
+          <Link href="/cart" className="relative inline-flex">
+            <ShoppingBag className="h-5 w-5 text-gray-700" />
+          </Link>
         </div>
-        <Link href="/login" className="text-xs font-medium hidden md:block">
-          LOGIN
-        </Link>
-        <Link href="/wishlist" className="relative inline-flex">
-          <Heart className="h-5 w-5 text-gray-700" />
-        </Link>
-        <Link href="/cart" className="relative inline-flex">
-          <ShoppingBag className="h-5 w-5 text-gray-700" />
-        </Link>
 
         {/* Mobile menu button */}
         <button className="md:hidden" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
@@ -58,21 +60,21 @@ function Header() {
           </div>
           <div className="flex flex-col space-y-3">
             <Link
-              href="/men-clothing"
+              href="/"
               className="text-sm font-medium text-gray-700 hover:text-bewakoof-dark py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               MEN
             </Link>
             <Link
-              href="/women-clothing"
+              href="/"
               className="text-sm font-medium text-gray-700 hover:text-bewakoof-dark py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               WOMEN
             </Link>
             <Link
-              href="/mobile-covers"
+              href="/"
               className="text-sm font-medium text-gray-700 hover:text-bewakoof-dark py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
